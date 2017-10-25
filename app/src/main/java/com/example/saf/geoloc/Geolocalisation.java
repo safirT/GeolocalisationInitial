@@ -39,15 +39,15 @@ public class Geolocalisation extends Activity implements OnClickListener, Locati
         setContentView(R.layout.main);
 
         //On récupère le service de localisation
-        lManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+       // lManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         //Initialisation de l'écran
         reinitialisationEcran();
 
         //On affecte un écouteur d'évènement aux boutons
-        findViewById(R.id.choix_source).setOnClickListener(this);
+       /* findViewById(R.id.choix_source).setOnClickListener(this);
         findViewById(R.id.obtenir_position).setOnClickListener(this);
-        findViewById(R.id.afficherAdresse).setOnClickListener(this);
+        findViewById(R.id.afficherAdresse).setOnClickListener(this);*/
     }
 
     //Méthode déclencher au clique sur un bouton
@@ -82,8 +82,8 @@ public class Geolocalisation extends Activity implements OnClickListener, Locati
         reinitialisationEcran();
 
         //On demande au service la liste des sources disponibles.
-        List<String> providers = lManager.getProviders(true);
-        final String[] sources = new String[providers.size()];
+     /*   List<String> providers = lManager.getProviders(true);
+        final String[] sources = new String[providers.size()];*/
         int i = 0;
         //on stock le nom de ces source dans un tableau de string
         for (String provider : providers)
@@ -115,7 +115,7 @@ public class Geolocalisation extends Activity implements OnClickListener, Locati
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        lManager.requestLocationUpdates(choix_source, 30000, 0, this);
+       // lManager.requestLocationUpdates(choix_source, 30000, 0, this);
     }
 
     private void afficherLocation() {
@@ -134,8 +134,8 @@ public class Geolocalisation extends Activity implements OnClickListener, Locati
         try {
             //Ici on récupère la premiere adresse trouvé gràce à la position que l'on a récupéré
             List
-                    <Address> adresses = geo.getFromLocation(location.getLatitude(),
-                    location.getLongitude(),1);
+                    //<Address> adresses = geo.getFromLocation(location.getLatitude(),
+                   // location.getLongitude(),1);
 
             if(adresses != null && adresses.size() == 1){
                 Address adresse = adresses.get(0);
